@@ -1,0 +1,42 @@
+<div class="col s12 mt-3 mb-3 text-center"><h5>Reusable component for Tasks Lists</h5></div>
+
+<div>
+
+    <div *ngIf="unDoneListShow" class="listrow" >
+        <div *ngFor="let task of Tasks" class="row">
+            <div class="col s6" *ngIf="!task.checked">
+                <mat-list>
+                    <mat-list-item >
+                        {{task.taskName}} 
+                    </mat-list-item>
+                </mat-list>
+            </div>
+
+            <div class="col s6">
+                <mat-action-list  *ngIf="!task.checked" (click)="checked(task)">
+                    <button mat-list-item   class="btn mb-3" > Mark Done </button>
+                </mat-action-list>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="!unDoneListShow" class="listrow" >
+        <div *ngFor="let task of Tasks" class="row">
+            <div class="col s6" *ngIf="task.checked">
+                <mat-list>
+                    <mat-list-item >
+                        {{task.taskName}} 
+                    </mat-list-item>
+                </mat-list>
+            </div>
+
+            <div class="col s6">
+                <mat-action-list  *ngIf="task.checked" (click)="checked(task)">
+                    <button mat-list-item  class="btn mb-3" > Mark UnDone </button>
+                </mat-action-list>
+            </div>
+        </div>
+    </div>
+
+
+</div>
